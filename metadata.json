@@ -1,0 +1,5 @@
+{
+  "name": "Coloring Page Paletter",
+  "description": "Upload a coloring page, and this app will use AI to suggest beautiful color palettes and show you how the colored page will look.",
+  "requestFramePermissions": []
+}
