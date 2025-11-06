@@ -1,10 +1,10 @@
 import { GoogleGenAI, Type, Modality } from "@google/genai";
-import { ColorPalette, ColoringOptions } from '../types';
+import { ColorPalette, ColoringOptions } from '../types/index';
 
-const API_KEY = process.env.API_KEY;
+const API_KEY = import.meta.env.VITE_GEMINI_API_KEY;
 
 if (!API_KEY) {
-  throw new Error("API_KEY environment variable is not set");
+  throw new Error("VITE_GEMINI_API_KEY environment variable is not set");
 }
 
 const ai = new GoogleGenAI({ apiKey: API_KEY });
@@ -61,7 +61,7 @@ export const colorImageWithPalette = async (
   options: ColoringOptions
 ): Promise<string> => {
   const imagePart = fileToGenerativePart(image.base64, image.mimeType);
-  
+
   let prompt = `Colorize this coloring page. Use only the colors from this palette: ${palette.colors.join(', ')}. Fill the regions of the coloring page naturally and beautifully with these colors.`;
 
   const instructions: string[] = [];
